@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkchakra_ui_date_input_example=self.webpackChunkchakra_ui_date_input_example||[]).push([[9101],{9130:a=>{function e(a){a.languages.brainfuck={pointer:{pattern:/<|>/,alias:"keyword"},increment:{pattern:/\+/,alias:"inserted"},decrement:{pattern:/-/,alias:"deleted"},branching:{pattern:/\[|\]/,alias:"important"},operator:/[.,]/,comment:/\S+/}}a.exports=e,e.displayName="brainfuck",e.aliases=[]}}]);
+//# sourceMappingURL=react-syntax-highlighter_languages_refractor_brainfuck.d347269a.chunk.js.map

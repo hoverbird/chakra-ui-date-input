@@ -152,7 +152,7 @@ export const DatePicker = (props: IDatePickerProps) => {
           </HStack>
         </Center>
         <Box p={3}>
-          <Grid align='center' templateColumns='repeat(7, 1fr)' gap={3}>
+          <Grid alignItems='center' templateColumns='repeat(7, 1fr)' gap={3}>
             {daysMap.map((d, i) => (
               <Text color={color} key={i} w='100%'>
                 {d.substring(0, 3).toLocaleUpperCase()}

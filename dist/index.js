@@ -6,19 +6,14 @@ var React = require('react');
 var React__default = _interopDefault(React);
 var dayjs = _interopDefault(require('dayjs'));
 
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
-
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
+function _objectWithoutPropertiesLoose(r, e) {
+  if (null == r) return {};
+  var t = {};
+  for (var n in r) if ({}.hasOwnProperty.call(r, n)) {
+    if (e.includes(n)) continue;
+    t[n] = r[n];
   }
-
-  return target;
+  return t;
 }
 
 var daysMap = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -28,16 +23,12 @@ var getDayDetails = function getDayDetails(args) {
   var day = args.index % 7;
   var prevMonth = args.month - 1;
   var prevYear = args.year;
-
   if (prevMonth < 0) {
     prevMonth = 11;
     prevYear--;
   }
-
   var prevMonthNumberOfDays = getNumberOfDays(prevYear, prevMonth);
-
   var _date = (date < 0 ? prevMonthNumberOfDays + date : date % args.numberOfDays) + 1;
-
   var month = date < 0 ? -1 : date >= args.numberOfDays ? 1 : 0;
   var timestamp = new Date(args.year, args.month, _date).getTime();
   return {
@@ -59,7 +50,6 @@ var getMonthDetails = function getMonthDetails(year, month) {
   var currentDay = null;
   var index = 0;
   var cols = 7;
-
   for (var row = 0; row < rows; row++) {
     for (var col = 0; col < cols; col++) {
       currentDay = getDayDetails({
@@ -73,7 +63,6 @@ var getMonthDetails = function getMonthDetails(year, month) {
       index++;
     }
   }
-
   return monthArray;
 };
 var getMonthStr = function getMonthStr(month) {
@@ -85,65 +74,50 @@ var oneDay = 60 * 60 * 24 * 1000;
 var todayTimestamp = Date.now() - Date.now() % oneDay + new Date().getTimezoneOffset() * 1000 * 60;
 var DatePicker = function DatePicker(props) {
   var onChange = props.onChange,
-      _props$dateFormat = props.dateFormat,
-      dateFormat = _props$dateFormat === void 0 ? 'DD/MM/YYYY' : _props$dateFormat,
-      rest = _objectWithoutPropertiesLoose(props, _excluded);
-
+    _props$dateFormat = props.dateFormat,
+    dateFormat = _props$dateFormat === void 0 ? 'DD/MM/YYYY' : _props$dateFormat,
+    rest = _objectWithoutPropertiesLoose(props, _excluded);
   var date = new Date();
-
   var _useState = React.useState(date.getFullYear()),
-      year = _useState[0],
-      setYear = _useState[1];
-
+    year = _useState[0],
+    setYear = _useState[1];
   var _useState2 = React.useState(date.getMonth()),
-      month = _useState2[0],
-      setMonth = _useState2[1];
-
+    month = _useState2[0],
+    setMonth = _useState2[1];
   var _useState3 = React.useState(getMonthDetails(year, month)),
-      monthDetails = _useState3[0],
-      setMonthDetails = _useState3[1];
-
+    monthDetails = _useState3[0],
+    setMonthDetails = _useState3[1];
   var _useState4 = React.useState(),
-      selectedDay = _useState4[0],
-      setSelectedDay = _useState4[1];
-
+    selectedDay = _useState4[0],
+    setSelectedDay = _useState4[1];
   var inputRef = React.createRef();
   var color = react.useColorModeValue('gray', 'white');
-
   var isCurrentDay = function isCurrentDay(day) {
     return day.timestamp === todayTimestamp;
   };
-
   var isSelectedDay = function isSelectedDay(day) {
     return day.timestamp === selectedDay;
   };
-
   var getDateStringFromTimestamp = function getDateStringFromTimestamp(timestamp) {
     var dateObject = new Date(timestamp);
     var month = dateObject.getMonth() + 1;
     var date = dateObject.getDate();
     return dayjs(dateObject.getFullYear() + '-' + (month < 10 ? '0' + month : month) + '-' + (date < 10 ? '0' + date : date)).format(dateFormat);
   };
-
   var onDateClick = function onDateClick(day) {
     setSelectedDay(day.timestamp);
-
     if (inputRef.current) {
       inputRef.current.value = getDateStringFromTimestamp(day.timestamp);
       onChange(inputRef.current.value);
     }
   };
-
   var setYearAction = function setYearAction(offset) {
     setYear(year + offset);
     setMonthDetails(getMonthDetails(year + offset, month));
   };
-
   var setMonthAction = function setMonthAction(offset) {
     var _year = year;
-
     var _month = month + offset;
-
     if (_month === -1) {
       _month = 11;
       _year--;
@@ -151,12 +125,10 @@ var DatePicker = function DatePicker(props) {
       _month = 0;
       _year++;
     }
-
     setYear(_year);
     setMonth(_month);
     setMonthDetails(getMonthDetails(_year, _month));
   };
-
   return React__default.createElement(react.Menu, Object.assign({}, rest), React__default.createElement(react.MenuButton, {
     w: '100%',
     type: 'button'
@@ -223,7 +195,7 @@ var DatePicker = function DatePicker(props) {
   }))), React__default.createElement(react.Box, {
     p: 3
   }, React__default.createElement(react.Grid, {
-    align: 'center',
+    alignItems: 'center',
     templateColumns: 'repeat(7, 1fr)',
     gap: 3
   }, daysMap.map(function (d, i) {

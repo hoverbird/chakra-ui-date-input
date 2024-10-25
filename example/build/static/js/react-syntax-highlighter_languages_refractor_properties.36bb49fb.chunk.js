@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkchakra_ui_date_input_example=self.webpackChunkchakra_ui_date_input_example||[]).push([[5559],{3648:e=>{function a(e){e.languages.properties={comment:/^[ \t]*[#!].*$/m,"attr-value":{pattern:/(^[ \t]*(?:\\(?:\r\n|[\s\S])|[^\\\s:=])+?(?: *[=:] *| ))(?:\\(?:\r\n|[\s\S])|[^\\\r\n])+/m,lookbehind:!0},"attr-name":/^[ \t]*(?:\\(?:\r\n|[\s\S])|[^\\\s:=])+?(?= *[=:] *| )/m,punctuation:/[=:]/}}e.exports=a,a.displayName="properties",a.aliases=[]}}]);
+//# sourceMappingURL=react-syntax-highlighter_languages_refractor_properties.36bb49fb.chunk.js.map
