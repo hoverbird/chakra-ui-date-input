@@ -4,7 +4,10 @@
   "description": "Date Input Component for chakra UI library",
   "author": "ericmaro",
   "license": "MIT",
-  "repository": "ericmaro/chakra-ui-date-input",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hoverbird/chakra-ui-date-input.git"
+  },
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.tsx",
